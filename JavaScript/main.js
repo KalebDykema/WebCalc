@@ -267,7 +267,7 @@ function makeOpp(){
 // Allows to keep adding, just adding results onto the first display variable
 function checkIfDisplaysAreUsed(){
     if(display != 0 && displayTwo != 0){
-        
+
     }
 }
 
@@ -327,11 +327,11 @@ function addNum(num){
     if(operand == ''){ 
         // Checks for deciaml
         if(num == '.'){
-            if(display == 0) return;
-            else display = display.toString() + num.toString();
+            display = display.toString() + num.toString();
         }
         // Just keeps it as is if it's already 0 and the num is 0
-        else if(display == 0){
+        else if(display === 0){
+            console.log('test');
             display = num;
         }
         // Changes the number properly
