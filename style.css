@@ -1,0 +1,177 @@
+/* Variables */
+:root{
+    --bg-color: #e9e9e9;
+    --base-color: #f5f5dc;
+    --top-ops-color: #D4D4D2;
+    --side-ops-color: #FF9500;
+    --nums-color: #505050;
+    font-size: 32px;
+}
+
+html, body{
+    height: 100%;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+}
+
+.container{
+    height: 100%;
+    margin: auto;
+
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+.btn{
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    border-radius: 100%;
+   
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+/* Button Classes */
+.top-op{
+    background: var(--top-ops-color);
+}
+
+.side-op{
+    background: var(--side-ops-color);
+}
+
+.num{
+    background: var(--top-ops-color);
+}
+
+/* Base */
+#base{
+    margin: auto;
+    padding: 1.5rem;
+    background-color: var(--base-color);
+    border-radius: 1.5625rem;
+
+    display: grid;
+    grid-template-areas: 
+        'display display display display'
+        'ac opp perc div'
+        'one two three mult'
+        'four five six sub'
+        'seven eight nine add'
+        'zero zero dec equal';
+    grid-gap: 0.5rem;
+}
+
+
+/* Display */
+#display{
+    grid-area: display;
+
+    display: inline-block;
+    text-align: right;
+    padding: 1rem;
+    margin: 0.1rem;
+    border-radius: 0.3125rem;
+
+    background-color: black;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+   
+    display: grid;
+    justify-content: right;
+    align-content: center;
+}
+
+
+ /*  AC +/- %  */
+#ac{
+    grid-area: ac;
+}
+
+#opp{
+    grid-area: opp;
+}
+
+#perc{
+    grid-area: perc;
+}
+
+
+ /* / x - + */
+#div{
+    grid-area: div;
+}
+
+#mult{
+    grid-area: mult;
+}
+
+#sub{
+    grid-area: sub;
+}
+
+#add{
+    grid-area: add;
+
+}
+#equal{
+    grid-area: equal;
+}
+
+
+/* 1 2 3 4 5 6 8 9 0 . */
+#one{
+    grid-area: one;
+}
+
+#two{
+    grid-area: two;
+}
+
+#three{
+    grid-area: three;
+}
+
+#four{
+    grid-area: four;
+}
+
+#five{
+    grid-area: five;
+}
+
+#six{
+    grid-area: six;
+}
+
+#seven{
+    grid-area: seven;
+}
+
+#eight{
+    grid-area: eight;
+}
+
+#nine{
+    grid-area: nine;
+}
+
+#zero{
+    grid-area: zero;
+    width: 6.40625rem;
+    border-radius: 6.40625rem;
+}
+
+#dec{
+    grid-area: dec;
+}
