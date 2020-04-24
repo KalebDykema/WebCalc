@@ -41,86 +41,187 @@ UInine.addEventListener('click', () => addNum(9));
 UIzero.addEventListener('click', () => addNum(0));
 // UIDec.addEventListener('click', () => addNum('.'));
 
-// Keyboard Event Listeners
+// Keydown Event Listeners
 document.onkeydown = e => {
-    // Percentage
-    if(e.key === '%'){
-        makePerc();
-    }
     // All Clear
     if(e.key === 'Escape'){
         allClear();
+        UIac.classList += ' light-top-op';
     }
-    
+    // Percentage
+    if(e.key === '%'){
+        makePerc();
+        UIperc.classList += ' light-top-op';
+    }
     // Divide
     if(e.key === '/'){
         clickDiv();
+        UIdiv.classList += ' light-side-op';
     }
     // Multiply
-    if(e.key === '*'){
+    if(e.key === '*' || e.key === 'x' || e.key === 'X'){
         clickMult();
+        UImult.classList += ' light-side-op';
     }
     // Subtract
     if(e.key === '-'){
         clickSub();
+        UIsub.classList += ' light-side-op';
     }
     // Add
     if(e.key === '+'){
         clickAdd();
+        UIadd.classList += ' light-side-op';
     }
     // Subtract
     if(e.key === '-'){
         clickSub();
+        UIsubclassList += ' light-side-op';
     }
     // Equal
     if(e.key === '=' || e.key === 'Enter'){
         clickEqual();
+        UIequal.classList += ' light-side-op';
     }
 
     // One
     if(e.key === '1'){
         addNum(1);
+        UIone.classList += ' light-num';
     }
     // Two
     if(e.key === '2'){
         addNum(2);
+        UItwo.classList += ' light-num';
     }
     // Three
     if(e.key === '3'){
         addNum(3);
+        UIthree.classList += ' light-num';
     }
     // Four
     if(e.key === '4'){
         addNum(4);
+        UIfour.classList += ' light-num';
     }
     // Five
     if(e.key === '5'){
         addNum(5);
+        UIfive.classList += ' light-num';
     }
     // Six
     if(e.key === '6'){
         addNum(6);
+        UIsix.classList += ' light-num';
     }
     // Seven
     if(e.key === '7'){
         addNum(7);
+        UIseven.classList += ' light-num';
     }
     // Eight
     if(e.key === '8'){
         addNum(8);
+        UIeight.classList += ' light-num';
     }
     // Nine
     if(e.key === '9'){
         addNum(9);
+        UInine.classList += ' light-num';
     }
     // Zero
     if(e.key === '0'){
         addNum(0);
+        UIzero.classList += ' light-num';
     }
     // Decimal
-    // if(e.key === '.'){
-    //     addNum('.');
-    // }
+    if(e.key === '.'){
+        // addNum('.');
+        UIdec.classList += ' light-num';
+    }
+};
+
+// Keyup Event Listeners
+document.onkeyup = e => {
+    // All Clear
+    if(e.key === 'Escape'){
+        UIac.classList.remove('light-top-op');
+    }
+    // Percentage
+    if(e.key === '%'){
+        UIperc.classList.remove('light-top-op');
+    }
+    // Divide
+    if(e.key === '/'){
+        UIdiv.classList.remove('light-side-op');
+    }
+    // Multiply
+    if(e.key === '*' || e.key === 'x' || e.key === 'X'){
+        UImult.classList.remove('light-side-op');
+    }
+    // Subtract
+    if(e.key === '-'){
+        UIsub.classList.remove('light-side-op');
+    }
+    // Add
+    if(e.key === '+'){
+        UIadd.classList.remove('light-side-op');
+    }
+    // Subtract
+    if(e.key === '-'){
+        UIsubclassList.remove('light-side-op');
+    }
+    // Equal
+    if(e.key === '=' || e.key === 'Enter'){
+        UIequal.classList.remove('light-side-op');
+    }
+
+    // One
+    if(e.key === '1'){
+        UIone.classList.remove('light-num');
+    }
+    // Two
+    if(e.key === '2'){
+        UItwo.classList.remove('light-num');
+    }
+    // Three
+    if(e.key === '3'){
+        UIthree.classList.remove('light-num');
+    }
+    // Four
+    if(e.key === '4'){
+        UIfour.classList.remove('light-num');
+    }
+    // Five
+    if(e.key === '5'){
+        UIfive.classList.remove('light-num');
+    }
+    // Six
+    if(e.key === '6'){
+        UIsix.classList.remove('light-num');
+    }
+    // Seven
+    if(e.key === '7'){
+        UIseven.classList.remove('light-num');
+    }
+    // Eight
+    if(e.key === '8'){
+        addNum(8);
+        UIeight.classList.remove('light-num');
+    }
+    // Nine
+    if(e.key === '9'){
+        UInine.classList.remove('light-num');
+    }
+    // Zero
+    if(e.key === '0'){
+        UIzero.classList.remove('light-num');
+    }
+    // Decimal
+    if(e.key === '.'){
+        // addNum('.');
+        UIdec.classList.remove('light-num');
+    }
 };
 
 // Math Variables

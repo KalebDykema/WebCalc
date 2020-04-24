@@ -57,6 +57,17 @@ body{
     cursor: pointer;
 }
 
+/* Active Color Classes */
+.light-top-op{
+    background-color: var(--top-ops-active) !important;
+}
+.light-side-op{
+    background-color: var(--side-ops-active) !important;
+}
+.light-num{
+    background-color: var(--nums-active) !important;
+}
+
 /* Button Classes */
 .top-op{
     background: var(--top-ops-color);
