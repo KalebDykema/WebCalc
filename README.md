@@ -9,7 +9,7 @@ Web application written in JavaScript in which you will be able to click on butt
 # To-Do's for the author
 
 - Add base design -DONE
-- Refine design
+- Refine design -DONE
 - Add logic
 - Add use of buttons
 - Add use of keyboard

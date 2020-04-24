@@ -1,13 +1,21 @@
 /* Variables */
 :root{
-    --bg-color: #e9e9e9;
-    --base-color: #f5f5dc;
-    --top-ops-color: #D4D4D2;
+    --bg-color: #C32148;
+    --base-color: #2D383A;
+
+    --top-ops-color: #bebebd;
+    --top-ops-active: #D4D4D2;
+
     --side-ops-color: #FF9500;
+    --side-ops-active: #ffaa32;
+
     --nums-color: #505050;
-    font-size: 32px;
+    --nums-active: #616161;
+
+    font-size: 48px;
 }
 
+/* Global */
 html, body{
     height: 100%;
 }
@@ -29,34 +37,54 @@ body{
 }
 
 .btn{
-    display: inline-block;
     width: 3rem;
     height: 3rem;
     text-align: center;
     border-radius: 100%;
+    font-size: 1.3rem;
    
     display: grid;
     justify-content: center;
     align-content: center;
+
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+.btn:hover{
+    cursor: pointer;
 }
 
 /* Button Classes */
 .top-op{
     background: var(--top-ops-color);
 }
+.top-op:active{
+    background-color: var(--top-ops-active);
+}
 
 .side-op{
     background: var(--side-ops-color);
+    color: #fff;
+}
+.side-op:active{
+    background: var(--side-ops-active);
 }
 
 .num{
-    background: var(--top-ops-color);
+    background: var(--nums-color);
+    color: #fff;
+}
+.num:active{
+    background: var(--nums-active);
 }
 
 /* Base */
 #base{
     margin: auto;
-    padding: 1.5rem;
+    padding: 1rem;
     background-color: var(--base-color);
     border-radius: 1.5625rem;
 
@@ -78,14 +106,14 @@ body{
 
     display: inline-block;
     text-align: right;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     margin: 0.1rem;
     border-radius: 0.3125rem;
 
     background-color: black;
     color: white;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 2rem;
+    font-size: 2.5rem;
    
     display: grid;
     justify-content: right;
