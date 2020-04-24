@@ -206,7 +206,6 @@ document.onkeyup = e => {
     }
     // Eight
     if(e.key === '8'){
-        addNum(8);
         UIeight.classList.remove('light-num');
     }
     // Nine
@@ -265,9 +264,10 @@ function makeOpp(){
 }
 
 // Allows to keep adding, just adding results onto the first display variable
-function checkIfDisplaysAreUsed(){
-    if(display != 0 && displayTwo != 0){
-
+function checkIfOperandIsUsed(){
+    if(operand != ''){
+        console.log('t');
+        solve();
     }
 }
 
@@ -280,43 +280,47 @@ function makePerc(){
 
 // Selects the division operand 
 function clickDiv(){
+    checkIfOperandIsUsed()
     operand = '/';
     updateDisplay(operand);
 }
 
 // Selects the muliplicaiton operand 
 function clickMult(){
+    checkIfOperandIsUsed()
     operand = '*';
     updateDisplay(operand);
 }
 
 // Selects the subtraction operand 
 function clickSub(){
+    checkIfOperandIsUsed()
     operand = '-';
     updateDisplay(operand);
 }
 
 // Selects the addition operand 
 function clickAdd(){
+    checkIfOperandIsUsed()
     operand = '+';
     updateDisplay(operand);
+}
+
+// Solves the problem and figures out how to based on the operand
+function solve(){
+    if(operand == '/') display = display / displayTwo;
+    if(operand == '*') display = display * displayTwo;
+    if(operand == '-') display = display - displayTwo;
+    if(operand == '+') display = display + displayTwo;
+    displayTwo = 0;
+    updateDisplay(display);
 }
 
 // Adds the results together
 function clickEqual(){
     if(display + displayTwo == 0) display = 0;
-    
-    if(operand == '/') display = display / displayTwo;
-    
-    if(operand == '*') display = display * displayTwo;
-
-    if(operand == '-') display = display - displayTwo;
-    
-    if(operand == '+') display = display + displayTwo;
-
+    solve();
     operand = '';
-    displayTwo = 0;
-    updateDisplay(display);
     display = 0;
 }
 
@@ -331,7 +335,6 @@ function addNum(num){
         }
         // Just keeps it as is if it's already 0 and the num is 0
         else if(display === 0){
-            console.log('test');
             display = num;
         }
         // Changes the number properly
@@ -349,7 +352,7 @@ function addNum(num){
             else displayTwo = displayTwo.toString() + num.toString();
         }
         // Just keeps it as is if it's already 0 and the num is 0
-        else if(displayTwo == 0){
+        else if(displayTwo === 0){
             displayTwo = num;
         // Changes the number properly
         } else {
