@@ -76,7 +76,7 @@ document.onkeydown = e => {
     // Subtract
     if(e.key === '-'){
         clickSub();
-        UIsubclassList += ' light-side-op';
+        UIsub.classList += ' light-side-op';
     }
     // Equal
     if(e.key === '=' || e.key === 'Enter'){
@@ -169,7 +169,7 @@ document.onkeyup = e => {
     }
     // Subtract
     if(e.key === '-'){
-        UIsubclassList.remove('light-side-op');
+        UIsub.classList.remove('light-side-op');
     }
     // Equal
     if(e.key === '=' || e.key === 'Enter'){
@@ -263,6 +263,20 @@ function makeOpp(){
     updateDisplay(display);
 }
 
+// Turns it into a percentage/decimal
+function makePerc(){
+    if(UIdisplay.textContent == display){
+        display = display / 100;
+        updateDisplay(display);
+    }
+    else if(UIdisplay.textContent == displayTwo){
+        console.log('a');
+        displayTwo = displayTwo / 100;
+        updateDisplay(displayTwo);
+    }
+}
+
+
 // Allows to keep adding, just adding results onto the first display variable
 function checkIfOperandIsUsed(){
     if(operand != ''){
@@ -270,13 +284,6 @@ function checkIfOperandIsUsed(){
         solve();
     }
 }
-
-// Turns it into a percentage/decimal
-function makePerc(){
-    display = display / 100;
-    updateDisplay(display);
-}
-
 
 // Selects the division operand 
 function clickDiv(){
