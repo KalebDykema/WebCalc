@@ -264,6 +264,13 @@ function makeOpp(){
     updateDisplay(display);
 }
 
+// Allows to keep adding, just adding results onto the first display variable
+function checkIfDisplaysAreUsed(){
+    if(display != 0 && displayTwo != 0){
+        
+    }
+}
+
 // Turns it into a percentage/decimal
 function makePerc(){
     display = display / 100;
@@ -310,6 +317,7 @@ function clickEqual(){
     operand = '';
     displayTwo = 0;
     updateDisplay(display);
+    display = 0;
 }
 
 
