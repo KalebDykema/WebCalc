@@ -20,7 +20,7 @@ const UInine = document.querySelector('#nine');
 const UIzero = document.querySelector('#zero');
 const UIdec = document.querySelector('#dec');
 
-// Event Listeners
+// Button Event Listeners
 UIac.addEventListener('click', allClear);
 UIopp.addEventListener('click', makeOpp);
 UIperc.addEventListener('click', makePerc);
@@ -40,6 +40,88 @@ UIeight.addEventListener('click', () => addNum(8));
 UInine.addEventListener('click', () => addNum(9));
 UIzero.addEventListener('click', () => addNum(0));
 // UIDec.addEventListener('click', () => addNum('.'));
+
+// Keyboard Event Listeners
+document.onkeydown = e => {
+    // Percentage
+    if(e.key === '%'){
+        makePerc();
+    }
+    // All Clear
+    if(e.key === 'Escape'){
+        allClear();
+    }
+    
+    // Divide
+    if(e.key === '/'){
+        clickDiv();
+    }
+    // Multiply
+    if(e.key === '*'){
+        clickMult();
+    }
+    // Subtract
+    if(e.key === '-'){
+        clickSub();
+    }
+    // Add
+    if(e.key === '+'){
+        clickAdd();
+    }
+    // Subtract
+    if(e.key === '-'){
+        clickSub();
+    }
+    // Equal
+    if(e.key === '=' || e.key === 'Enter'){
+        clickEqual();
+    }
+
+    // One
+    if(e.key === '1'){
+        addNum(1);
+    }
+    // Two
+    if(e.key === '2'){
+        addNum(2);
+    }
+    // Three
+    if(e.key === '3'){
+        addNum(3);
+    }
+    // Four
+    if(e.key === '4'){
+        addNum(4);
+    }
+    // Five
+    if(e.key === '5'){
+        addNum(5);
+    }
+    // Six
+    if(e.key === '6'){
+        addNum(6);
+    }
+    // Seven
+    if(e.key === '7'){
+        addNum(7);
+    }
+    // Eight
+    if(e.key === '8'){
+        addNum(8);
+    }
+    // Nine
+    if(e.key === '9'){
+        addNum(9);
+    }
+    // Zero
+    if(e.key === '0'){
+        addNum(0);
+    }
+    // Decimal
+    // if(e.key === '.'){
+    //     addNum('.');
+    // }
+};
 
 // Math Variables
 let display = 0;
