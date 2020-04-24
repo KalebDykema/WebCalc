@@ -12,8 +12,9 @@ Web application written in JavaScript in which you will be able to click on butt
 
 - Add base design -DONE
 - Refine design -DONE
-- Add logic -PARTIAL
-- Add use of buttons
+- Add logic -DONE
+- Add use of buttons -DONE
+- Refine operations and functions and fix bugs
 - Add use of keyboard
 - Make sure it's responsive
 

@@ -29,29 +29,33 @@ UImult.addEventListener('click', clickMult);
 UIsub.addEventListener('click', clickSub);
 UIadd.addEventListener('click', clickAdd);
 UIequal.addEventListener('click', clickEqual);
-UIone.addEventListener('click', clickOne);
-// UItwo.addEventListener('click', clickTwo);
-// UIthree.addEventListener('click', clickThree);
-// UIfour.addEventListener('click', clickFour);
-// UIfive.addEventListener('click', clickFive);
-// UIsix.addEventListener('click', clickSix);
-// UIseven.addEventListener('click', clickSeven);
-// UIeight.addEventListener('click', clickEight);
-// UInine.addEventListener('click', clickNine);
-// UIzero.addEventListener('click', clickZero);
-// UIDec.addEventListener('click', clickDec);
+UIone.addEventListener('click', () => addNum(1));
+UItwo.addEventListener('click', () => addNum(2));
+UIthree.addEventListener('click', () => addNum(3));
+UIfour.addEventListener('click', () => addNum(4));
+UIfive.addEventListener('click', () => addNum(5));
+UIsix.addEventListener('click', () => addNum(6));
+UIseven.addEventListener('click', () => addNum(7));
+UIeight.addEventListener('click', () => addNum(8));
+UInine.addEventListener('click', () => addNum(9));
+UIzero.addEventListener('click', () => addNum(0));
+// UIDec.addEventListener('click', () => addNum('.'));
 
+// Math Variables
 let display = 0;
 let displayTwo = 0;
 let operand = '';
 
 // Updates display
 function updateDisplay(disp = display){
+    // Avoids the number going outside of the display, just resets everything
     if(disp.toString().length > 7){
         UIdisplay.textContent = 'TOO BIG';
         setTimeout(() => { 
-            disp = 0;
-            UIdisplay.textContent = disp; 
+            display = 0;
+            displayTwo = 0;
+            operand = '';
+            UIdisplay.textContent = display;
         }, 2000);
     } else UIdisplay.textContent = disp;
 }
@@ -126,17 +130,28 @@ function clickEqual(){
 }
 
 
-// Adds a number to a chosen argument
-function addNum(disp, )
-
-// Adds 1 to display var
-function clickOne(){
-    if(operand == '')
-    display = display.toString() + '1';
-    display = Number(display);
-    console.log(display);
-
-    updateDisplay(display);
+// Adds a number to a display variable
+function addNum(num){
+   // First display variable
+    if(operand == ''){
+        if(display == 0){
+            display = num;
+        } else {
+            display = display.toString() + num.toString();
+            display = Number(display);
+        }
+        updateDisplay(display);
+    }
+    // Second display variable
+    else if(operand != ''){
+        if(displayTwo == 0){
+            displayTwo = num;
+        } else {
+            displayTwo = displayTwo.toString() + num.toString();
+            displayTwo = Number(displayTwo);
+        }
+        updateDisplay(displayTwo);
+    }
 }
 
 updateDisplay();
