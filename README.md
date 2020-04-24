@@ -18,6 +18,7 @@ Web application written in JavaScript in which you will be able to click on butt
 - Add use of keyboard -DONE
 - Add color changes in buttons when keyboard is being used instead of clicking -DONE
 - Make it responsive work on mobile
+- Clean up code and separate it into different files
 # License
 
 [MIT License 2020](https://mit-license.org), [Kaleb Dykema](https://github.com/KalebDykemal).

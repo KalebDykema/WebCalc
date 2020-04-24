@@ -39,7 +39,7 @@ UIseven.addEventListener('click', () => addNum(7));
 UIeight.addEventListener('click', () => addNum(8));
 UInine.addEventListener('click', () => addNum(9));
 UIzero.addEventListener('click', () => addNum(0));
-// UIDec.addEventListener('click', () => addNum('.'));
+UIdec.addEventListener('click', () => addNum('.'));
 
 // Keydown Event Listeners
 document.onkeydown = e => {
@@ -141,7 +141,7 @@ document.onkeydown = e => {
     }
 };
 
-// Keyup Event Listeners
+// Keyup Event Listeners; just to remove the light color classes
 document.onkeyup = e => {
     // All Clear
     if(e.key === 'Escape'){
@@ -219,7 +219,7 @@ document.onkeyup = e => {
     }
     // Decimal
     if(e.key === '.'){
-        // addNum('.');
+        addNum('.');
         UIdec.classList.remove('light-num');
     }
 };
@@ -316,10 +316,18 @@ function clickEqual(){
 // Adds a number to a display variable
 function addNum(num){
    // First display variable
-    if(operand == ''){
-        if(display == 0){
+    if(operand == ''){ 
+        // Checks for deciaml
+        if(num == '.'){
+            if(display == 0) return;
+            else display = display.toString() + num.toString();
+        }
+        // Just keeps it as is if it's already 0 and the num is 0
+        else if(display == 0){
             display = num;
-        } else {
+        }
+        // Changes the number properly
+        else {
             display = display.toString() + num.toString();
             display = Number(display);
         }
@@ -327,8 +335,15 @@ function addNum(num){
     }
     // Second display variable
     else if(operand != ''){
-        if(displayTwo == 0){
+        // Checks for deciaml
+        if(num == '.'){
+            if(displayTwo == 0) return;
+            else displayTwo = displayTwo.toString() + num.toString();
+        }
+        // Just keeps it as is if it's already 0 and the num is 0
+        else if(displayTwo == 0){
             displayTwo = num;
+        // Changes the number properly
         } else {
             displayTwo = displayTwo.toString() + num.toString();
             displayTwo = Number(displayTwo);
