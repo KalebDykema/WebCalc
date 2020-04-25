@@ -12,7 +12,7 @@
     --nums-color: #505050;
     --nums-active: #616161;
 
-    font-size: 40px;
+    font-size: 42px;
 }
 
 /* Global */
@@ -25,6 +25,11 @@ body{
     padding: 0;
     font-family: Helvetica, Arial, sans-serif;
     background-color: var(--bg-color);
+}
+
+a:hover{
+    font-style: italic;
+    color: #fff;
 }
 
 .container{
@@ -213,4 +218,22 @@ body{
 
 #dec{
     grid-area: dec;
+}
+
+/* Footer */
+footer{
+    margin: auto;;
+}
+
+h4{
+    text-align: center;
+    margin: 0.8rem;
+}
+
+a{
+    text-decoration: underline;
+    color: #000;
+    text-align: center;
+    display: inline-block;
+    margin: 0 1.5rem;
 }

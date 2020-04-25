@@ -21,25 +21,25 @@ const UIzero = document.querySelector('#zero');
 const UIdec = document.querySelector('#dec');
 
 // Button Event Listeners
-UIac.addEventListener('click', allClear);
-UIopp.addEventListener('click', makeOpp);
-UIperc.addEventListener('click', makePerc);
-UIdiv.addEventListener('click', clickDiv);
-UImult.addEventListener('click', clickMult);
-UIsub.addEventListener('click', clickSub);
-UIadd.addEventListener('click', clickAdd);
-UIequal.addEventListener('click', clickEqual);
-UIone.addEventListener('click', () => addNum(1));
-UItwo.addEventListener('click', () => addNum(2));
-UIthree.addEventListener('click', () => addNum(3));
-UIfour.addEventListener('click', () => addNum(4));
-UIfive.addEventListener('click', () => addNum(5));
-UIsix.addEventListener('click', () => addNum(6));
-UIseven.addEventListener('click', () => addNum(7));
-UIeight.addEventListener('click', () => addNum(8));
-UInine.addEventListener('click', () => addNum(9));
-UIzero.addEventListener('click', () => addNum(0));
-UIdec.addEventListener('click', () => addNum('.'));
+UIac.addEventListener('tap', allClear);
+UIopp.addEventListener('tap', makeOpp);
+UIperc.addEventListener('tap', makePerc);
+UIdiv.addEventListener('tap', clickDiv);
+UImult.addEventListener('tap', clickMult);
+UIsub.addEventListener('tap', clickSub);
+UIadd.addEventListener('tap', clickAdd);
+UIequal.addEventListener('tap', clickEqual);
+UIone.addEventListener('tap', () => addNum(1));
+UItwo.addEventListener('tap', () => addNum(2));
+UIthree.addEventListener('tap', () => addNum(3));
+UIfour.addEventListener('tap', () => addNum(4));
+UIfive.addEventListener('tap', () => addNum(5));
+UIsix.addEventListener('tap', () => addNum(6));
+UIseven.addEventListener('tap', () => addNum(7));
+UIeight.addEventListener('tap', () => addNum(8));
+UInine.addEventListener('tap', () => addNum(9));
+UIzero.addEventListener('tap', () => addNum(0));
+UIdec.addEventListener('tap', () => addNum('.'));
 
 // Keydown Event Listeners
 document.onkeydown = e => {
@@ -270,7 +270,6 @@ function makePerc(){
         updateDisplay(display);
     }
     else if(UIdisplay.textContent == displayTwo){
-        console.log('a');
         displayTwo = displayTwo / 100;
         updateDisplay(displayTwo);
     }
@@ -280,7 +279,6 @@ function makePerc(){
 // Allows to keep adding, just adding results onto the first display variable
 function checkIfOperandIsUsed(){
     if(operand != ''){
-        console.log('t');
         solve();
     }
 }
