@@ -29,17 +29,17 @@ UImult.addEventListener('tap', clickMult);
 UIsub.addEventListener('tap', clickSub);
 UIadd.addEventListener('tap', clickAdd);
 UIequal.addEventListener('tap', clickEqual);
-UIone.addEventListener('tap', (e) => {addNum(1); e.preventDefault();});
-UItwo.addEventListener('tap', (e) => {addNum(2); e.preventDefault();});
-UIthree.addEventListener('tap', (e) => {addNum(3); e.preventDefault();});
-UIfour.addEventListener('tap', (e) => {addNum(4); e.preventDefault();});
-UIfive.addEventListener('tap', (e) => {addNum(5); e.preventDefault();});
-UIsix.addEventListener('tap', (e) => {addNum(6); e.preventDefault();});
-UIseven.addEventListener('tap', (e) => {addNum(7); e.preventDefault();});
-UIeight.addEventListener('tap', (e) => {addNum(8); e.preventDefault();});
-UInine.addEventListener('tap', (e) => {addNum(9); e.preventDefault();});
-UIzero.addEventListener('tap', (e) => {addNum(0); e.preventDefault();});
-UIdec.addEventListener('tap', (e) => {addNum('.'); e.preventDefault();});
+UIone.addEventListener('tap', () => addNum(1));
+UItwo.addEventListener('tap', () => addNum(2));
+UIthree.addEventListener('tap', () => addNum(3));
+UIfour.addEventListener('tap', () => addNum(4));
+UIfive.addEventListener('tap', () => addNum(5));
+UIsix.addEventListener('tap', () => addNum(6));
+UIseven.addEventListener('tap', () => addNum(7));
+UIeight.addEventListener('tap', () => addNum(8));
+UInine.addEventListener('tap', () => addNum(9));
+UIzero.addEventListener('tap', () => addNum(0));
+UIdec.addEventListener('tap', () => addNum('.'));
 
 // Keydown Event Listeners
 document.onkeydown = e => {
@@ -245,8 +245,7 @@ function updateDisplay(disp = display){
 
 
 // Clears the display
-function allClear(e){
-    e.preventDefault();
+function allClear(){
     display = 0;
     displayTwo = 0;
     operand = '';
