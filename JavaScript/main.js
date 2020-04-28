@@ -326,7 +326,7 @@ function clickEqual(){
     if(display + displayTwo == 0) display = 0;
     solve();
     operand = '';
-    display = 0;
+    // display = 0;
 }
 
 
