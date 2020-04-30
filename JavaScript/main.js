@@ -84,8 +84,7 @@ document.onkeydown = e => {
 // Math Variables
 let numOne = 0;
 let numTwo = 0;
-let dispNum = 0;
-let operand = '/';
+let operand = '';
 let recentOp = false;
 
 // Updates display
@@ -94,12 +93,12 @@ function updateDisplay(disp = numOne){
     if(disp.toString().length > 7){
         UIdisplay.textContent = 'TOO BIG';
         setTimeout(clickAllClear, 2000);
-    } else UIdisplay.textContent = disp;
+    } else {
+        UIdisplay.textContent = disp;
+    }
 
     logVariables();
 }
-
-updateDisplay();
 
 // Adds and removes a temporary highlight class
 function highlightButton(ui, className){
@@ -118,31 +117,25 @@ function clickAllClear(){
 // Makes the value opposite of what it is now; positive to negative or vice versa
 function clickOpp(){
     highlightButton(UIopp, 'light-top-op');
-    if(Math.sign(display) == 1){
-        display = display * -1;
+    if(operand == ''){
+        numOne = numOne * -1;
+        updateDisplay(numOne);
     }
-    else if(Math.sign(display) == -1){
-        display = Math.abs(display);
+    else if(operand != ''){
+        numTwo = numTwo * -1;
+        updateDisplay(numTwo);
     }
-    updateDisplay(display);
 }
 // Turns it into a percentage/decimal
 function clickPerc(){
     highlightButton(UIperc, 'light-top-op');
-    if(UIdisplay.textContent == display){
-        display = display / 100;
-        updateDisplay(display);
+    if(operand == ''){
+        numOne = numOne / 100;
+        updateDisplay(numOne);
     }
-    else if(UIdisplay.textContent == displayTwo){
-        displayTwo = displayTwo / 100;
-        updateDisplay(displayTwo);
-    }
-}
-
-// Allows to keep adding, just adding results onto the first display variable
-function checkIfOperandIsUsed(){
-    if(operand != ''){
-        solve();
+    else if(operand != ''){
+        numTwo = numTwo / 100;
+        updateDisplay(numTwo);
     }
 }
 
@@ -182,63 +175,60 @@ function clickAdd(){
     updateDisplay(operand);
 }
 
-// Solves the problem and figures out how to based on the operand
-function solve(){
-    if(operand == '/') display = display / displayTwo;
-    if(operand == '*') display = display * displayTwo;
-    if(operand == '-') display = display - displayTwo;
-    if(operand == '+') display = display + displayTwo;
-    // displayTwo = 0;
-
-    recentOp = true;
-    // operand = '';
-    console.log("EQUAL()");
-
-    updateDisplay(display);
-}
-
 // Adds the results together
 function clickEqual(){
     highlightButton(UIequal, 'light-side-op');
-    if(display + displayTwo == 0) display = 0;
-    solve();
+    solveMath();
 }
 
 // When a number is clicked, this changes the color of the number's UI element and takes care of checking how to enter it
 function clickNum(num, ui){
     highlightButton(ui, 'light-num');
     if(recentOp === true){
-        numOne = 0;
+        if(operand == '') numOne = 0;
+        else if(operand == '') numTwo = 0;
         recentOp = false;
         operand = '';
     }
-
-    if(operand == '') enterNum(num, numOne);
-    if(operand != '') enterNum(num, numTwo);
+    if(operand == '') setNum(num, numOne);
+    else if(operand != '') setNum(num, numTwo);
 }
 
-
-// Enters the number into current number
-function enterNum(num, numSelection){
+// Returns the number after processing it
+function setNum(num, numSelection){
+    num = numSelection.toString() + num.toString();
     // Checks for deciaml
-    if(num == '.') numSelection = numSelection.toString() + num.toString();
-    // Just keeps it as is if it's already 0 and the num is 0
-    else if(num === 0){
-        numSelection = num;
-    // Changes the number properly
-    } else {
-        numSelection = numSelection.toString() + num.toString();
-        numSelection = Number(numSelection);
+    if(num != '.') num = Number(num);
+    if(operand == '') numOne = num;
+    else if(operand != '') numTwo = num; 
+    updateDisplay(num);
+}
+
+// Allows to keep adding, just adding results onto the first display variable
+function checkIfOperandIsUsed(){
+    if(operand != ''){
+        solveMath();
     }
-    logVariables();
-    updateDisplay(numSelection);
+}
+
+// Solves a problem using the two nums and the operand
+function solveMath(){
+    if(operand == '/') numOne = numOne / numTwo;
+    else if(operand == '*') numOne = numOne * numTwo;
+    else if(operand == '-') numOne = numOne - numTwo;
+    else if(operand == '+') numOne = numOne + numTwo;
+    else return;
+    recentOp = true;
+    operand = '';
+    numTwo = 0;
+
+    updateDisplay(numOne);
 }
 
 // Logs variables for testing purposes
 function logVariables(){
     console.log("NumOne: ", numOne);
     console.log("NumTwo: ", numTwo);
-    console.log("DispNum: ", dispNum);
     console.log("Operand: ", operand);
     console.log("Recent Operation: ", recentOp);
     console.log("\n");
