@@ -96,6 +96,8 @@ function updateDisplay(disp = numOne){
     } else {
         UIdisplay.textContent = disp;
     }
+
+    logVariables();
 }
 
 // Adds and removes a temporary highlight class
@@ -110,6 +112,7 @@ function clickAllClear(){
     numOne = 0;
     numTwo = 0;
     operand = '';
+    recentOp = false;
     updateDisplay(numOne);
 }
 // Makes the value opposite of what it is now; positive to negative or vice versa
@@ -194,11 +197,15 @@ function clickNum(num, ui){
 
 // Returns the number after processing it
 function setNum(num, numSelection){
-    console.log(num, numSelection);
     // Checks for deciaml
-    if(num.toString().includes('.')) num = numSelection.toString() + num.toString();
-    else {
-        num = numSelection + num.toString();
+    if(numSelection.toString().endsWith('.') && num == 0){ 
+        num = numSelection.toString() + num.toString();
+    }
+    else if(num.toString().includes('.')){
+        num = numSelection.toString() + num.toString();
+    }
+    else{
+        num = numSelection.toString() + num.toString();
         num = Number(num);
     }
     if(operand == '') numOne = num;
