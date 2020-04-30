@@ -194,9 +194,13 @@ function clickNum(num, ui){
 
 // Returns the number after processing it
 function setNum(num, numSelection){
-    num = numSelection.toString() + num.toString();
+    console.log(num, numSelection);
     // Checks for deciaml
-    if(num != '.') num = Number(num);
+    if(num.toString().includes('.')) num = numSelection.toString() + num.toString();
+    else {
+        num = numSelection + num.toString();
+        num = Number(num);
+    }
     if(operand == '') numOne = num;
     else if(operand != '') numTwo = num; 
     updateDisplay(num);
