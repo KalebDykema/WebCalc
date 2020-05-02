@@ -227,6 +227,7 @@ function solveMath(){
     if(numOne.toString().length > 7){
         let int = Math.trunc(numOne).toString();
         numOne = numOne.toFixed(6-int.length);
+        numOne = Number(numOne);
         console.log('run');
     }
     recentOp = true;
