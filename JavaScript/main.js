@@ -97,7 +97,7 @@ function updateDisplay(disp = numOne){
         UIdisplay.textContent = disp;
     }
 
-    // logVariables();
+    logVariables();
 }
 
 // Adds and removes a temporary highlight class
@@ -197,17 +197,12 @@ function clickNum(num, ui){
 
 // Returns the number after processing it
 function setNum(num, numSelection){
-    // Checks for deciaml
-    if(numSelection.toString().endsWith('.') && num == 0){ 
-        num = numSelection.toString() + num.toString();
-    }
-    else if(num.toString().includes('.')){
-        num = numSelection.toString() + num.toString();
-    }
-    else{
-        num = numSelection.toString() + num.toString();
-        num = Number(num);
-    }
+    num = num.toString();
+    numSelection = numSelection.toString();
+    // Checks for decimal
+    if(num == '.' && numSelection.includes('.') == false) num = numSelection + num;
+    else if(numSelection == '0') num = num;
+    else if(numSelection != '0') num = numSelection.toString() + num.toString();
     if(operand == '') numOne = num;
     else if(operand != '') numTwo = num; 
     updateDisplay(num);
@@ -222,6 +217,8 @@ function checkIfOperandIsUsed(){
 
 // Solves a problem using the two nums and the operand
 function solveMath(){
+    numOne = Number(numOne);
+    numTwo = Number(numTwo);
     if(operand == '/') numOne = numOne / numTwo;
     else if(operand == '*') numOne = numOne * numTwo;
     else if(operand == '-') numOne = numOne - numTwo;
