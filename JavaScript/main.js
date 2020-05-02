@@ -97,7 +97,7 @@ function updateDisplay(disp = numOne){
         UIdisplay.textContent = disp;
     }
 
-    logVariables();
+    // logVariables();
 }
 
 // Adds and removes a temporary highlight class
