@@ -18,7 +18,7 @@ Web application written in JavaScript in which you will be able to click on butt
 - Add use of keyboard -DONE
 - Add color changes in buttons when keyboard is being used instead of clicking -DONE
 - Add rounding for decimals that are too big related to JavaScipt bug -DONE
-- Make it responsive and work on mobile
+- Make it responsive and work on mobile -DONE
 - Clean up code - DONE
 - Separate code into different files
 # License

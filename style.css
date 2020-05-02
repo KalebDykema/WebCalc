@@ -12,7 +12,8 @@
     --nums-color: #505050;
     --nums-active: #616161;
 
-    font-size: 42px;
+    /* font-size: 42px; */
+    font-size: 2.5vh;
 }
 
 /* Global */
