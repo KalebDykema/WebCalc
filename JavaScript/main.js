@@ -227,6 +227,11 @@ function solveMath(){
     else if(operand == '-') numOne = numOne - numTwo;
     else if(operand == '+') numOne = numOne + numTwo;
     else return;
+    if(numOne.toString().length > 7){
+        let int = Math.trunc(numOne).toString();
+        numOne = numOne.toFixed(6-int.length);
+        console.log('run');
+    }
     recentOp = true;
     operand = '';
     numTwo = 0;
