@@ -197,10 +197,9 @@ function clickNum(num, ui){
 function setNum(num, numSelection){
     num = num.toString();
     numSelection = numSelection.toString();
-    // Checks for decimal
     if(num == '.' && numSelection.includes('.') == false) num = numSelection + num;
     else if(numSelection == '0') num = num;
-    else if(numSelection != '0') num = numSelection.toString() + num.toString();
+    else num = numSelection.toString() + num.toString();
     if(operand == '') numOne = num;
     else if(operand != '') numTwo = num; 
     updateDisplay(num);
