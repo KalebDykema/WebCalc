@@ -96,8 +96,6 @@ function updateDisplay(disp = numOne){
     } else {
         UIdisplay.textContent = disp;
     }
-
-    logVariables();
 }
 
 // Adds and removes a temporary highlight class
@@ -228,7 +226,6 @@ function solveMath(){
         let int = Math.trunc(numOne).toString();
         numOne = numOne.toFixed(6-int.length);
         numOne = Number(numOne);
-        console.log('run');
     }
     recentOp = true;
     operand = '';
