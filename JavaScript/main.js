@@ -180,14 +180,14 @@ function setNum(num, numSelection){
     updateDisplay(num);
 }
 
-// If there's already an operand after typing in another one, then it'll call solveMath()
+// If there's already an operand value, and it's not displayed, after typing in another one, then it'll call solveMath()
 function checkIfOperandIsUsed(){
     if(operand != '' & UIdisplay.textContent != operand){
         solveMath();
     }
 }
 
-// Solves a problem using the two nums and the operand
+// Converts nums to Numbers (they're process as strings), then does the math based on the operand; if a float's length ends up being longer than 7 characters, it rounds it
 function solveMath(){
     numOne = Number(numOne);
     numTwo = Number(numTwo);
@@ -196,7 +196,7 @@ function solveMath(){
     else if(operand == '-') numOne = numOne - numTwo;
     else if(operand == '+') numOne = numOne + numTwo;
     else return;
-    if(numOne.toString().length > 7){
+    if(numOne.toString().length > 7 && numOne.toString().includes('.')){
         let int = Math.trunc(numOne).toString();
         numOne = numOne.toFixed(6-int.length);
         numOne = Number(numOne);
