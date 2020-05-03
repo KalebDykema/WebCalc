@@ -6,7 +6,7 @@ A JavaScript web app that uses a simple UI calculator to solve math problems.
 
 # Description
 
-Web application written in JavaScript in which you will be able to click on buttons or type queries in your keyboard to solve math problems. The look is partially inspired by the Apple iOS calculator. This is currently in development.
+Web application written in JavaScript in which you will be able to click on buttons or use your keyboard to solve math problems. The look is partially inspired by the Apple iOS calculator.
 
 # To-Do's for the author
 
@@ -20,7 +20,7 @@ Web application written in JavaScript in which you will be able to click on butt
 - Add rounding for decimals that are too big related to JavaScipt bug -DONE
 - Make it responsive and work on mobile -DONE
 - Clean up code - DONE
-- Add better notes
+- Add better notes -DONE
 # License
 
 [MIT License 2020](https://mit-license.org), [Kaleb Dykema](https://github.com/KalebDykemal).
