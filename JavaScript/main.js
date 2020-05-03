@@ -24,10 +24,10 @@ const UIdec = document.querySelector('#dec');
 UIac.addEventListener('click', clickAllClear);
 UIopp.addEventListener('click', clickOpp);
 UIperc.addEventListener('click', clickPerc);
-UIdiv.addEventListener('click', clickDiv);
-UImult.addEventListener('click', clickMult);
-UIsub.addEventListener('click', clickSub);
-UIadd.addEventListener('click', clickAdd);
+UIdiv.addEventListener('click', () => clickOp('/', UIdiv));
+UImult.addEventListener('click', () => clickOp('*', UImult));
+UIsub.addEventListener('click',  () => clickOp('-', UIsub));
+UIadd.addEventListener('click',  () => clickOp('+', UIadd));
 UIequal.addEventListener('click', clickEqual);
 UIone.addEventListener('click', () => clickNum(1, UIone));
 UItwo.addEventListener('click', () => clickNum(2, UItwo));
@@ -48,13 +48,13 @@ document.onkeydown = e => {
     // Percentage
     if(e.key === '%') clickPerc();
     // Divide
-    if(e.key === '/') clickDiv();
+    if(e.key === '/') clickOp('/', UIdiv);
     // Multiply
-    if(e.key === '*' || e.key === 'x' || e.key === 'X') clickMult();
+    if(e.key === '*' || e.key === 'x' || e.key === 'X') clickOp('*', UImult);
     // Subtract
-    if(e.key === '-') clickSub();
+    if(e.key === '-') clickOp('-', UIsub);
     // Add
-    if(e.key === '+')  clickAdd();
+    if(e.key === '+')  clickOp('+', UIadd);
     // Equal
     if(e.key === '=' || e.key === 'Enter')clickEqual();
     // One
@@ -88,23 +88,23 @@ let operand = '';
 let recentOp = false;
 
 // Updates display
-function updateDisplay(disp = numOne){
-    // Avoids the number going outside of the display, just resets everything
-    if(disp.toString().length > 7){
+function updateDisplay(display = numOne){
+    // If the number is too big to display, it displays 'TOO BIG' then clears all variables after 2 seconds
+    if(display.toString().length > 7){
         UIdisplay.textContent = 'TOO BIG';
         setTimeout(clickAllClear, 2000);
     } else {
-        UIdisplay.textContent = disp;
+        UIdisplay.textContent = display;
     }
 }
 
-// Adds and removes a temporary highlight class
+// Adds and removes a highlight class for 0.15 second to a button selected by a key or the mouse
 function highlightButton(ui, className){
     ui.classList.add(className);
     setTimeout(() => ui.classList.remove(className), 150);
 }
 
-// Clears the display
+// Clears all variables and updates the display
 function clickAllClear(){
     highlightButton(UIac, 'light-top-op');
     numOne = 0;
@@ -113,7 +113,8 @@ function clickAllClear(){
     recentOp = false;
     updateDisplay(numOne);
 }
-// Makes the value opposite of what it is now; positive to negative or vice versa
+
+// Gives whatever is in the display the complete opposite value
 function clickOpp(){
     highlightButton(UIopp, 'light-top-op');
     if(operand == ''){
@@ -125,7 +126,8 @@ function clickOpp(){
         updateDisplay(numTwo);
     }
 }
-// Turns it into a percentage/decimal
+
+// Turns the display number into a percentage/decimal by diving by 100
 function clickPerc(){
     highlightButton(UIperc, 'light-top-op');
     if(operand == ''){
@@ -138,43 +140,16 @@ function clickPerc(){
     }
 }
 
-// Selects the division operand 
-function clickDiv(){
-    highlightButton(UIdiv, 'light-side-op');
+// Changes the operand to /, *, -, or + and updates the display with it; if the operand variables already has a value, then it calls solveMath() first, then updates the operand
+function clickOp(op, ui){
+    highlightButton(ui, 'light-side-op');
     checkIfOperandIsUsed();
-    operand = '/';
+    operand = op;
     recentOp = false;
     updateDisplay(operand);
 }
 
-// Selects the muliplicaiton operand 
-function clickMult(){
-    highlightButton(UImult, 'light-side-op');
-    checkIfOperandIsUsed()
-    operand = '*';
-    recentOp = false;
-    updateDisplay(operand);
-}
-
-// Selects the subtraction operand 
-function clickSub(){
-    highlightButton(UIsub, 'light-side-op');
-    checkIfOperandIsUsed()
-    operand = '-';
-    recentOp = false;
-    updateDisplay(operand);
-}
-
-// Selects the addition operand 
-function clickAdd(){
-    highlightButton(UIadd, 'light-side-op');
-    checkIfOperandIsUsed()
-    operand = '+';
-    recentOp = false;
-    updateDisplay(operand);
-}
-
-// Adds the results together
+// Highlights the equal button and calls the solveMath() function
 function clickEqual(){
     highlightButton(UIequal, 'light-side-op');
     solveMath();

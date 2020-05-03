@@ -20,7 +20,7 @@ Web application written in JavaScript in which you will be able to click on butt
 - Add rounding for decimals that are too big related to JavaScipt bug -DONE
 - Make it responsive and work on mobile -DONE
 - Clean up code - DONE
-- Separate code into different files
+- Add better notes
 # License
 
 [MIT License 2020](https://mit-license.org), [Kaleb Dykema](https://github.com/KalebDykemal).
