@@ -197,9 +197,9 @@ function clickNum(num, ui){
 function setNum(num, numSelection){
     num = num.toString();
     numSelection = numSelection.toString();
-    if(num == '.' && numSelection.includes('.') == false) num = numSelection + num;
-    else if(numSelection == '0') num = num;
-    else num = numSelection.toString() + num.toString();
+    if(num == '.' && numSelection.includes('.') == true) num = numSelection;
+    else if(numSelection == '0' && num != '.') num = num;
+    else num = numSelection + num;
     if(operand == '') numOne = num;
     else if(operand != '') numTwo = num; 
     updateDisplay(num);
