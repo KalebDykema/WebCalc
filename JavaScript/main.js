@@ -96,6 +96,8 @@ function updateDisplay(display = numOne){
     } else {
         UIdisplay.textContent = display;
     }
+
+    logVariables();
 }
 
 // Adds and removes a highlight class for 0.15 second to a button selected by a key or the mouse
@@ -155,20 +157,18 @@ function clickEqual(){
     solveMath();
 }
 
-// When a number is clicked, this changes the color of the number's UI element and takes care of checking how to enter it
+// Called when a number is clicked; after figuring out which number variables to apply it to, it then calls setNum()
 function clickNum(num, ui){
     highlightButton(ui, 'light-num');
-    if(recentOp === true){
-        if(operand == '') numOne = 0;
-        else if(operand == '') numTwo = 0;
+    if(recentOp == true){
+        numOne = 0;
         recentOp = false;
-        operand = '';
     }
     if(operand == '') setNum(num, numOne);
     else if(operand != '') setNum(num, numTwo);
 }
 
-// Returns the number after processing it
+// Adds the entered number onto the end of the selection (numOne or numTwo)
 function setNum(num, numSelection){
     num = num.toString();
     numSelection = numSelection.toString();
@@ -180,9 +180,9 @@ function setNum(num, numSelection){
     updateDisplay(num);
 }
 
-// Allows to keep adding, just adding results onto the first display variable
+// If there's already an operand after typing in another one, then it'll call solveMath()
 function checkIfOperandIsUsed(){
-    if(operand != ''){
+    if(operand != '' & UIdisplay.textContent != operand){
         solveMath();
     }
 }
